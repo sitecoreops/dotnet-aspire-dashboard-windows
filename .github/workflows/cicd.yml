@@ -29,6 +29,12 @@ jobs:
             parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2022
             os: windows-2022
 
+          - platform: ltsc2019
+            aspire_version: "9.0.0-preview.5.24551.3"
+            pretty_version: "9.0.0"
+            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-windowsservercore-ltsc2019
+            os: windows-2019
+
           - platform: ltsc2022
             aspire_version: "9.0.0-preview.5.24551.3"
             pretty_version: "9.0.0"
