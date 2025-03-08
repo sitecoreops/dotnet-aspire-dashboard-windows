@@ -13,22 +13,25 @@ jobs:
         os:
           - windows-2019
           - windows-2022
+        versions:
+          - "8.1.0"
+          - "9.0.0-preview.5.24551.3"
         include:
           - platform: ltsc2019
             aspire_version: "8.1.0"
-            tag: ghcr.io/pbering/dotnet-aspire-dashboard-windows:8.1.0-ltsc2019
+            pretty_version: "8.1.0"
             parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2019
             os: windows-2019
 
           - platform: ltsc2022
             aspire_version: "8.1.0"
-            tag: ghcr.io/pbering/dotnet-aspire-dashboard-windows:8.1.0-ltsc2022
+            pretty_version: "8.1.0"
             parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2022
             os: windows-2022
 
           - platform: ltsc2022
             aspire_version: "9.0.0-preview.5.24551.3"
-            tag: ghcr.io/pbering/dotnet-aspire-dashboard-windows:9.0.0-ltsc2022
+            pretty_version: "9.0.0"
             parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-windowsservercore-ltsc2022
             os: windows-2022
 
@@ -45,7 +48,7 @@ jobs:
 
       - name: Docker build and push
         run: |
-          $tag = "${{ matrix.tag }}"
+          $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:${{ matrix.pretty_version }}-${{ matrix.platform }}"
 
           docker build --build-arg ASPIRE_VERSION=${{ matrix.aspire_version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
           docker push $tag
