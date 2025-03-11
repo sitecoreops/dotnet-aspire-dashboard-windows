@@ -16,6 +16,9 @@ jobs:
         versions:
           - "8.1.0"
           - "9.0.0-preview.5.24551.3"
+        platform:
+          - ltsc2019
+          - ltsc2022
         include:
           - platform: ltsc2019
             aspire_version: "8.1.0"
@@ -63,4 +66,4 @@ jobs:
           $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:${{ matrix.pretty_version }}-${{ matrix.platform }}"
 
           docker build --build-arg ASPIRE_VERSION=${{ matrix.aspire_version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
-          docker push $tag
+          #docker push $tag
