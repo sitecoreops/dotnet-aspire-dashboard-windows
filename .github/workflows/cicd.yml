@@ -17,6 +17,7 @@ jobs:
           - "9.0.0-preview.5.24551.3"
           - "9.1.0-preview.1.25121.10"
           - "9.3.0-preview.1.25265.20"
+          - "9.4.0-preview.1.25378.8"
         include:
           - platform: ltsc2022
             aspire_version: "8.1.0"
