@@ -42,6 +42,12 @@ jobs:
             parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
             os: windows-2022
 
+          - platform: ltsc2022
+            aspire_version: "9.4.0-preview.1.25378.8"
+            pretty_version: "9.4.0"
+            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
+            os: windows-2022
+
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
