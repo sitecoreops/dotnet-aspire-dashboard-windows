@@ -20,9 +20,11 @@ jobs:
         include:
           - platform: ltsc2022
             parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
+            os: windows-2022
 
           - platform: ltsc2025
             parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2025
+            os: windows-2025
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -37,10 +39,15 @@ jobs:
 
       - name: Docker build and push
         run: |
-          $shortVersion = "${{ matrix.version }}".Substring(0, 5)
+          $version = "${{ matrix.version }}"
+          $shortVersion = $version.Substring(0, 5)
+          $parentImage = "${{ matrix.parent_image }}"
           $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:$shortVersion-${{ matrix.platform }}"
 
-          Write-Host "Building and pushing $tag"
+          Write-Host "version: $version"
+          Write-Host "shortVersion: $shortVersion"
+          Write-Host "tag: $tag"
+          Write-Host "parent_image: $parentImage"
 
-          docker build --build-arg ASPIRE_VERSION=${{ matrix.version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
-          docker push $tag
+          #docker build --build-arg ASPIRE_VERSION=${{ matrix.version }} --build-arg PARENT_IMAGE=$parentImage --tag $tag .
+          #docker push $tag
