@@ -13,27 +13,27 @@ jobs:
         os:
           - windows-2022
           - windows-2025
-        versions:
+        aspire_version:
           - "9.4.0-preview.1.25378.8"
           - "9.5.0-preview.1.25474.7"
         include:
           - platform: ltsc2022
             aspire_version: "9.4.0-preview.1.25378.8"
             pretty_version: "9.4.0"
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
             os: windows-2022
+            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
 
           - platform: ltsc2025
             aspire_version: "9.4.0-preview.1.25378.8"
             pretty_version: "9.4.0"
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
             os: windows-2025
+            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
 
           - platform: ltsc2025
             aspire_version: "9.5.0-preview.1.25474.7"
             pretty_version: "9.5.0"
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
             os: windows-2025
+            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
 
     runs-on: ${{ matrix.os }}
     steps:
