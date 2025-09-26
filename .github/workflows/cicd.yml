@@ -14,37 +14,9 @@ jobs:
           - windows-2022
           - windows-2025
         versions:
-          - "8.1.0"
-          - "9.0.0-preview.5.24551.3"
-          - "9.1.0-preview.1.25121.10"
-          - "9.3.0-preview.1.25265.20"
           - "9.4.0-preview.1.25378.8"
           - "9.5.0-preview.1.25474.7"
         include:
-          - platform: ltsc2022
-            aspire_version: "8.1.0"
-            pretty_version: "8.1.0"
-            parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2022
-            os: windows-2022
-
-          - platform: ltsc2022
-            aspire_version: "9.0.0-preview.5.24551.3"
-            pretty_version: "9.0.0"
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
-            os: windows-2022
-
-          - platform: ltsc2022
-            aspire_version: "9.1.0-preview.1.25121.10"
-            pretty_version: "9.1.0"
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
-            os: windows-2022
-
-          - platform: ltsc2022
-            aspire_version: "9.3.0-preview.1.25265.20"
-            pretty_version: "9.3.0"
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
-            os: windows-2022
-
           - platform: ltsc2022
             aspire_version: "9.4.0-preview.1.25378.8"
             pretty_version: "9.4.0"
