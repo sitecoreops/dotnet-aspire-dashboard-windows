@@ -44,10 +44,5 @@ jobs:
           $parentImage = "${{ matrix.parent_image }}"
           $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:$shortVersion-${{ matrix.platform }}"
 
-          Write-Host "version: $version"
-          Write-Host "shortVersion: $shortVersion"
-          Write-Host "tag: $tag"
-          Write-Host "parent_image: $parentImage"
-
-          #docker build --build-arg ASPIRE_VERSION=${{ matrix.version }} --build-arg PARENT_IMAGE=$parentImage --tag $tag .
-          #docker push $tag
+          docker build --build-arg ASPIRE_VERSION=$version --build-arg PARENT_IMAGE=$parentImage --tag $tag .
+          docker push $tag
