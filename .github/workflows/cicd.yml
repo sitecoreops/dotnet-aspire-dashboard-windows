@@ -74,10 +74,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Docker build and push
+      - name: Docker build and push (${{ matrix.pretty_version }}, ${{ matrix.aspire_version }}, ${{ matrix.platform }})
         run: |
           $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:${{ matrix.pretty_version }}-${{ matrix.platform }}"
 
           #docker build --build-arg ASPIRE_VERSION=${{ matrix.aspire_version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
           #docker push $tag
-          Write-Host "TESTING $tag"
