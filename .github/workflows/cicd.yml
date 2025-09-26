@@ -14,6 +14,10 @@ jobs:
           - windows-2022
           - windows-2025
         version:
+          - "8.1.0"
+          - "9.0.0-preview.5.24551.3"
+          - "9.1.0-preview.1.25121.10"
+          - "9.3.0-preview.1.25265.20"
           - "9.4.0-preview.1.25378.8"
           - "9.5.0-preview.1.25474.7"
         include:
@@ -27,16 +31,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Docker login
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Docker login
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker build and push
         run: |
-          $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:${{ matrix.version }}-${{ matrix.platform }}"
+          $shortVersion = "${{ matrix.version }}".Substring(0, 5)
+          $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:$shortVersion-${{ matrix.platform }}"
 
           #docker build --build-arg ASPIRE_VERSION=${{ matrix.version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
           #docker push $tag
