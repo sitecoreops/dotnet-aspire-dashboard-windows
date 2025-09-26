@@ -1,5 +1,5 @@
 
-# inspired by the official linux image: https://github.com/dotnet/dotnet-docker/blob/main/src/aspire-dashboard/9.1/azurelinux-distroless/amd64/Dockerfile
+# inspired by the official linux image: https://github.com/dotnet/dotnet-docker/blob/2dab39f7f727e34f95ea09205b4c29c63f83932a/src/aspire-dashboard/9.4/azurelinux-distroless/amd64/Dockerfile
 ARG PARENT_IMAGE=
 
 # ---

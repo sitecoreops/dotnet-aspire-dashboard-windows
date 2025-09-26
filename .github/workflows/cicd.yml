@@ -13,27 +13,15 @@ jobs:
         os:
           - windows-2022
           - windows-2025
-        aspire_version:
+        version:
           - "9.4.0-preview.1.25378.8"
           - "9.5.0-preview.1.25474.7"
         include:
           - platform: ltsc2022
-            aspire_version: "9.4.0-preview.1.25378.8"
-            pretty_version: "9.4.0"
-            os: windows-2022
             parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
 
           - platform: ltsc2025
-            aspire_version: "9.4.0-preview.1.25378.8"
-            pretty_version: "9.4.0"
-            os: windows-2025
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
-
-          - platform: ltsc2025
-            aspire_version: "9.5.0-preview.1.25474.7"
-            pretty_version: "9.5.0"
-            os: windows-2025
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
+            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2025
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -46,9 +34,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Docker build and push (${{ matrix.pretty_version }}, ${{ matrix.aspire_version }}, ${{ matrix.platform }})
+      - name: Docker build and push
         run: |
-          $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:${{ matrix.pretty_version }}-${{ matrix.platform }}"
+          $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:${{ matrix.version }}-${{ matrix.platform }}"
 
-          #docker build --build-arg ASPIRE_VERSION=${{ matrix.aspire_version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
+          #docker build --build-arg ASPIRE_VERSION=${{ matrix.version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
           #docker push $tag
