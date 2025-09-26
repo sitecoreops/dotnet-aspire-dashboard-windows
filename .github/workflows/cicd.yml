@@ -12,12 +12,14 @@ jobs:
       matrix:
         os:
           - windows-2022
+          - windows-2025
         versions:
           - "8.1.0"
           - "9.0.0-preview.5.24551.3"
           - "9.1.0-preview.1.25121.10"
           - "9.3.0-preview.1.25265.20"
           - "9.4.0-preview.1.25378.8"
+          - "9.5.0-preview.1.25474.7"
         include:
           - platform: ltsc2022
             aspire_version: "8.1.0"
@@ -55,6 +57,12 @@ jobs:
             parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
             os: windows-2025
 
+          - platform: ltsc2025
+            aspire_version: "9.5.0-preview.1.25474.7"
+            pretty_version: "9.5.0"
+            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
+            os: windows-2025
+
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -70,5 +78,6 @@ jobs:
         run: |
           $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:${{ matrix.pretty_version }}-${{ matrix.platform }}"
 
-          docker build --build-arg ASPIRE_VERSION=${{ matrix.aspire_version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
-          docker push $tag
+          #docker build --build-arg ASPIRE_VERSION=${{ matrix.aspire_version }} --build-arg PARENT_IMAGE=${{ matrix.parent_image }} --tag $tag .
+          #docker push $tag
+          Write-Host "TESTING $tag"
