@@ -14,16 +14,15 @@ jobs:
           - windows-2022
           - windows-2025
         version:
-          - "9.3.0-preview.1.25265.20"
-          - "9.4.0-preview.1.25378.8"
           - "9.5.0-preview.1.25474.7"
+          - "13.0.0-preview.1.25560.3"
         include:
           - platform: ltsc2022
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022
+            parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-ltsc2022
             os: windows-2022
 
           - platform: ltsc2025
-            parent_image: mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2025
+            parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-ltsc2025
             os: windows-2025
 
     runs-on: ${{ matrix.os }}
@@ -40,7 +39,7 @@ jobs:
       - name: Docker build and push
         run: |
           $version = "${{ matrix.version }}"
-          $shortVersion = $version.Substring(0, 5)
+          $shortVersion = ($version -replace '^(\d+\.\d+\.\d+).*$', '$1')
           $parentImage = "${{ matrix.parent_image }}"
           $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:$shortVersion-${{ matrix.platform }}"
 
