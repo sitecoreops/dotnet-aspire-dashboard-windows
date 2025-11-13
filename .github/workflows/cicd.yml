@@ -18,11 +18,11 @@ jobs:
           - "13.0.0-preview.1.25560.3"
         include:
           - platform: ltsc2022
-            parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-ltsc2022
+            parent_image: mcr.microsoft.com/dotnet/aspnet:10.0-nanoserver-ltsc2022
             os: windows-2022
 
           - platform: ltsc2025
-            parent_image: mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-ltsc2025
+            parent_image: mcr.microsoft.com/dotnet/aspnet:10.0-nanoserver-ltsc2025
             os: windows-2025
 
     runs-on: ${{ matrix.os }}
