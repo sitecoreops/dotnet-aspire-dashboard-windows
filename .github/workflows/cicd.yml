@@ -14,7 +14,6 @@ jobs:
           - windows-2022
           - windows-2025
         version:
-          - "9.5.0-preview.1.25474.7"
           - "13.0.0-preview.1.25560.3"
           - "13.1.0-preview.1.25616.3"
         include:
