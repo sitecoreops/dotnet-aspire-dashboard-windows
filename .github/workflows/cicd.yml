@@ -41,7 +41,7 @@ jobs:
           $version = "${{ matrix.version }}"
           $shortVersion = ($version -replace '^(\d+\.\d+\.\d+).*$', '$1')
           $parentImage = "${{ matrix.parent_image }}"
-          $tag = "ghcr.io/pbering/dotnet-aspire-dashboard-windows:$shortVersion-${{ matrix.platform }}"
+          $tag = "ghcr.io/sitecoreops/dotnet-aspire-dashboard-windows:$shortVersion-${{ matrix.platform }}"
 
           docker build --build-arg ASPIRE_VERSION=$version --build-arg PARENT_IMAGE=$parentImage --tag $tag .
           docker push $tag
